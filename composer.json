@@ -1,0 +1,30 @@
+{
+    "name": "thinkcreative/blankpackage",
+    "description": "This is a placeholder for the packages we will build",
+    "authors": [
+        {
+            "name": "Matthew Butler",
+            "email": "matthew@thinkcreative.uk.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-0": {
+            "Thinkcreative\\Blankpackage\\": "src"
+        },
+        "files": [
+            "src/Thinkcreative/Blankpackage/functions.php"
+        ]
+    },
+    "extra" : {
+        "laravel": {
+            "providers" : [
+                "Thinkcreative\\Blankpackage\\BlankServiceProvider"
+            ],
+            "aliases": {
+                "Blank" : "Thinkcreative\\Blankpackage\\Blank"
+            }
+        }
+    }
+}
