@@ -1,8 +1,8 @@
 <?php 
 
-namespace Thinkcreative\Blankpackage;
+namespace Thinkcreative\Blog;
 
-class Blog 
+class Blog extends Model
 {
 
 	/**
@@ -17,7 +17,13 @@ class Blog
 	 */
 	private $order_by = 'published_at';
 
-	
+	/**
+	 * Set the default blog post table to be `blog`
+	 * @var string
+	 */
+	private $table = 'blog';
 
-	
+
+
+
 }

@@ -1,11 +1,16 @@
 <?php 
 
 
-Route::get('blankz', function() {
+Route::get('blog', function() {
 
 	// Test that our functions are loaded. 
-	dd(score());
+	dd( blog() );
 
 	return 'hello';
 
 });
+
+
+Route::get('Admin/BlogOptions', 'Admin/BlogOptionsController@index');
+
+Route::resource('Admin/Blog', 'Admin/BlogController');

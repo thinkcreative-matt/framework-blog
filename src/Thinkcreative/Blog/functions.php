@@ -1,6 +1,6 @@
 <?php 
 
-if(! function_exists('default_blog')) {
+if(! function_exists('blog')) {
 	// Aloow people to just call all the defaults for the blog. 
 	function blog() 
 	{
@@ -8,9 +8,7 @@ if(! function_exists('default_blog')) {
 		// whatever your alias is. 
 		$blog = app('blog');
 
-		dd($whatever);
-
-		return '1-0';
+		$blog->all()->dd();
 
 	}
 }
