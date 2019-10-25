@@ -15,8 +15,8 @@ class CreateBlogOptions extends Migration
     {
         Schema::create('blog_options', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->enum('orderby', ['ASC', 'DESC', 'random']);
-            $table->enum('orderas', ['published_at', 'created_at', 'updated_at'])->nullable()
+            $table->enum('order_by', ['ASC', 'DESC', 'random']);
+            $table->enum('order_as', ['published_at', 'created_at', 'updated_at'])->nullable();
             $table->timestamps();
         });
     }
