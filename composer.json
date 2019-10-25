@@ -7,7 +7,7 @@
             "email": "matthew@thinkcreative.uk.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {},
     "autoload": {
         "psr-0": {
