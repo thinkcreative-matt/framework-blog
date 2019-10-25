@@ -11,6 +11,10 @@ Route::get('blog', function() {
 });
 
 
-Route::get('Admin/BlogOptions', 'Admin/BlogOptionsController@index');
+//  Ensure we are using the blog we want to. 
+Route::group(['namespace' => 'Thinkcreative\Blog\Controller'], function() {
 
-Route::resource('Admin/Blog', 'Admin/BlogController');
+	// Get the blog posts. We dont need to do anything else here. 
+    Route::get('blog', ['uses' => 'BlogController@index']);
+
+});
