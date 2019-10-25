@@ -4,7 +4,7 @@
 Route::get('blankz', function() {
 
 	// Test that our functions are loaded. 
-	dd(score())
+	dd(score());
 
 	return 'hello';
 
