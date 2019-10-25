@@ -14,6 +14,21 @@ class Blog extends Model
 	protected $table = 'blog';
 
 	/**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // We only ever want the first result!
+        static::addGlobalScope('id', function (Builder $builder) {
+            $builder->where('id', '=', 1);
+        });
+    }
+
+	/**
 	 * Get the route key for the model.
 	 *
 	 * @return string

@@ -16,7 +16,7 @@ class BlogController extends Controller {
     public function index() 
     {
 
-    	dd(new BlogOptions);
+    	dd( new BlogOptions::all() );
 
         return 'Think!Creative';
 
