@@ -3,6 +3,7 @@
 namespace Thinkcreative\Blog;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class BlogOptions extends Model
 {
@@ -13,11 +14,13 @@ class BlogOptions extends Model
 	 */
 	protected $table = 'blog_options';
 
+	protected $perPage = 15;
+
 	/**
 	 * $order - Which direction to order the $order by as
 	 * @var string
 	 */
-	private $order = 'DESC';
+	private $order_dir = 'DESC';
 
 	/**
 	 * $order_by - the default column to order by
@@ -25,21 +28,44 @@ class BlogOptions extends Model
 	 */
 	private $order_by = 'published_at';
 
-	public function __construct() 
-	{
-		// dd($this);
-
-	}
-
-	public function getOrderAttribute() 
-	{
-		
-		if( is_null($this->order_by))
+	/**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
 
 
-			return $this->order_by;
+        // we only ever want one results. 
+        static::addGlobalScope('id', function (Builder $builder) {
+            $builder->where('id', '=', 1);
+        });
+    }
 
-	}
+    public function getOrderBy() {
+
+    	$bo = BlogOptions::first();
+
+    	if( is_null($bo) ) 
+    	{	
+    		return $this->order_by;
+    	}
+    	return $bo->order_by;
+
+    }
+
+    public function getOrderDir() {
+
+    	$bo = BlogOptions::first();
+
+    	if( is_null($bo) ) 
+    	{
+    		return $this->order_dir;
+    	}
+    	return $bo->order_dir;
+    }
 
 
 }

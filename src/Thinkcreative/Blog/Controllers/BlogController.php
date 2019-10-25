@@ -9,16 +9,23 @@ use Thinkcreative\Blog\BlogOptions;
 class BlogController extends Controller {
 
 
-	/**
-	 * WE only need to disply the blog
-	 * @return [Array] [return a collection of blog posts]
-	 */
+    /**
+     * WE only need to disply the blog
+     * @return [Array] [return a collection of blog posts]
+     */
     public function index() 
     {
 
-    	dd( new BlogOptions::all() );
 
-        return 'Think!Creative';
+        $bo = new BlogOptions;
+
+        $query = Blog::query();
+
+        $query->orderBy($bo->getOrderBy(), $bo->getOrderDir());
+        
+        return view('blog', [
+            'posts' => $query->get()
+        ]);
 
     }
 
