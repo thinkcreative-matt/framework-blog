@@ -1,10 +1,10 @@
 <?php 
 
-namespace Thinkcreative\Blankpackage;
+namespace Thinkcreative\Blog;
 
 use Illuminate\Support\ServiceProvider;
 
-class BlankServiceProvider extends ServiceProvider
+class BlogServiceProvider extends ServiceProvider
 {
 	/**
      * Bootstrap the application services.
@@ -13,8 +13,9 @@ class BlankServiceProvider extends ServiceProvider
      */
 	public function boot() 
 	{
+		
 		$this->publishes([
-			__DIR__ . '/../../config/packageName.php' => config_path('packageName.php')
+			__DIR__ . '/../../config/blog.php' => config_path('blog.php')
 		]);
 
 		// Register any CSS
@@ -59,11 +60,11 @@ class BlankServiceProvider extends ServiceProvider
      */
 	public function register()
 	{
-		$this->app->singleton(Blank::class, function() {
-			return new Blank();
+		$this->app->singleton(Blog::class, function() {
+			return new Blog();
 		});
 
-		$this->app->alias(Blank::class, 'blankz');
+		$this->app->alias(Blog::class, 'blog');
 	}
 
 }

@@ -1,6 +1,6 @@
 {
-    "name": "thinkcreative/blankpackage",
-    "description": "This is a placeholder for the packages we will build",
+    "name": "thinkcreative/blog",
+    "description": "This will allow us to view and administer the blog section of the framework",
     "authors": [
         {
             "name": "Matthew Butler",
@@ -11,19 +11,19 @@
     "require": {},
     "autoload": {
         "psr-0": {
-            "Thinkcreative\\Blankpackage\\": "src"
+            "Thinkcreative\\Blog\\": "src"
         },
         "files": [
-            "src/Thinkcreative/Blankpackage/functions.php"
+            "src/Thinkcreative/Blog/functions.php"
         ]
     },
     "extra" : {
         "laravel": {
             "providers" : [
-                "Thinkcreative\\Blankpackage\\BlankServiceProvider"
+                "Thinkcreative\\Blog\\BlogServiceProvider"
             ],
             "aliases": {
-                "Blank" : "Thinkcreative\\Blankpackage\\Blank"
+                "Blog" : "Thinkcreative\\Blog\\Blog"
             }
         }
     }

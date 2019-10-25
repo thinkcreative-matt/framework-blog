@@ -1,15 +1,15 @@
 <?php 
 
-namespace Thinkcreative\Blankpackage;
+namespace Thinkcreative\Blog;
 
 use Illuminate\Suppoort\Facades\Facade;
 
-class BlankFacade extends Facade
+class BlogFacade extends Facade
 {
 
 	protected static function getFacadeAccessor()
 	{
-		return 'blankz';
+		return 'blog';
 	}
 
 }
