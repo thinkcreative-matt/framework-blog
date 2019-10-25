@@ -3,7 +3,8 @@
 namespace Thinkcreative\Blog\Controllers;
 
 use App\Http\Controllers\Controller;
-use Thinkcreative\Blog;
+use Thinkcreative\Blog\Blog;
+use Thinkcreative\Blog\BlogOptions;
 
 class BlogController extends Controller {
 
@@ -15,7 +16,9 @@ class BlogController extends Controller {
     public function index() 
     {
 
-        return 'Think!';
+    	dd(new BlogOptions);
+
+        return 'Think!Creative';
 
     }
 
