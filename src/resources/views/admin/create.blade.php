@@ -11,7 +11,7 @@
 				<p>{{$post->intro}}</p>
 			@endif
 
-			<p>{{$post->limited_body}}</p>
+			<p>{{$post->body}}</p>
 					
 		</div>
 		

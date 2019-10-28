@@ -3,6 +3,8 @@
 namespace Thinkcreative\Blog;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 class Blog extends Model
 {
@@ -35,6 +37,21 @@ class Blog extends Model
 		
 	}
 
+	public function getPublishedAtDateAttribute() 
+	{
+
+		$date = Carbon::create($this->published_at);
+
+		return $date->format('l jS \\of F Y h:i:s A'); 
+
+	}
+
+	public function getLimitedBodyAttribute() 
+	{
+
+		return Str::limit($this->body, 100);
+
+	}
 
 
 }

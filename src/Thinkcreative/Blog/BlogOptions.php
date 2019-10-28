@@ -14,8 +14,6 @@ class BlogOptions extends Model
 	 */
 	protected $table = 'blog_options';
 
-	protected $perPage = 15;
-
 	/**
 	 * $order - Which direction to order the $order by as
 	 * @var string

@@ -33,10 +33,10 @@ class BlogController extends Controller {
      * Show the individual blog post
      * @return [Array] [A single collection of the requested blog post]
      */
-    public function show(Blog $slug)
+    public function show($slug)
     {
 
-        $blog = Blog::where('slug', $slug);
+        $blog = Blog::where('slug', $slug)->first();
 
         return view('blog::single', [
             'post' => $blog

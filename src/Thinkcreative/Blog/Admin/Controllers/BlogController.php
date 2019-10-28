@@ -5,6 +5,8 @@ namespace Thinkcreative\Blog\Admin\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Thinkcreative\Blog;
+
 class BlogController extends Controller
 {
     /**
@@ -14,8 +16,10 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
-        return 'Hello Admin';
+        Blog::all();
+
+        return 
+        
     }
 
     /**
@@ -47,7 +51,7 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        abort(404, 'No need to show. Try something different.');
     }
 
     /**
