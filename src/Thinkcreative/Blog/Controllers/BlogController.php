@@ -36,7 +36,11 @@ class BlogController extends Controller {
     public function show(Blog $blog)
     {
 
-        dd($blog);
+        $blog = Blog::where('slug', $slug);
+
+        return view('blog::single', [
+            'post' => $blog
+        ]);
     }
 
 }

@@ -2,6 +2,18 @@
 
 
 
+/**
+ * Admin routes
+ */
+
+//  Ensure we are using the blog we want to. 
+Route::group(['namespace' => 'Thinkcreative\Blog\Admin\Controllers', 'prefix' => 'admin',  'as' => 'admin.'], function() {
+
+	// Get the blog posts. We dont need to do anything else here. 
+    Route::resource('blog', 'BlogController');
+
+});
+
 //  Ensure we are using the blog we want to. 
 Route::group(['namespace' => 'Thinkcreative\Blog\Controllers'], function() {
 
@@ -14,14 +26,3 @@ Route::group(['namespace' => 'Thinkcreative\Blog\Controllers'], function() {
 });
 
 
-/**
- * Admin routes
- */
-
-//  Ensure we are using the blog we want to. 
-Route::group(['namespace' => 'Thinkcreative\Blog\Admin\Controllers', 'prefix' => 'admin'], function() {
-
-	// Get the blog posts. We dont need to do anything else here. 
-    Route::resource('blog', 'BlogController');
-
-});
