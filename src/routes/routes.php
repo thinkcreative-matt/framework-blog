@@ -6,12 +6,12 @@
 Route::group(['namespace' => 'Thinkcreative\Blog\Controllers'], function() {
 
 	// Get a single specified blog post
-	Route::get('blog/{slug}', 'BlogController@show');
+	Route::get('blog/{slug}', 'BlogController@show')->name('blog.show');
 
 	// Get the blog posts. We dont need to do anything else here. 
-    Route::get('blog', 'BlogController@index');
+    Route::get('blog', 'BlogController@index')->name('blog');
 
-})->name('blog');
+});;
 
 
 /**
