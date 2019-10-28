@@ -38,7 +38,7 @@ class BlogServiceProvider extends ServiceProvider
 
 		$this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
-		// $this->loadViewsFrom(__DIR__.'../../resources/views');
+		$this->loadViewsFrom(__DIR__.'../../resources/views', 'blog');
 
 		// Register any commands for use in the CLI
 		// Uncomment for use.

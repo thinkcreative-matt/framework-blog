@@ -23,7 +23,7 @@ class BlogController extends Controller {
 
         $query->orderBy($bo->getOrderBy(), $bo->getOrderDir());
         
-        return view('blog', [
+        return view('blog::blog', [
             'posts' => $query->get()
         ]);
 
