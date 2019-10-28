@@ -1,3 +1,5 @@
+<h1>ADMIN BLOG</h1>
+
 <div class="blog-container container">
 	
 	@foreach($posts as $post)

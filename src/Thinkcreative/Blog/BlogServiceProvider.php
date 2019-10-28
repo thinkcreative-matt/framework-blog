@@ -47,7 +47,7 @@ class BlogServiceProvider extends ServiceProvider
         ]);
 
         $this->publishes([
-            __DIR__ . '/../../resources/views/front' => base_path('resources/views/vendor/back')
+            __DIR__ . '/../../resources/views/back' => base_path('resources/views/vendor/back')
         ]);
 
 		// Register any commands for use in the CLI

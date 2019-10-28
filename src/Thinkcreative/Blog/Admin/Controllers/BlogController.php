@@ -5,7 +5,7 @@ namespace Thinkcreative\Blog\Admin\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use Thinkcreative\Blog;
+use Thinkcreative\Blog\Blog;
 
 class BlogController extends Controller
 {
