@@ -16,9 +16,12 @@ class BlogController extends Controller
      */
     public function index()
     {
-        Blog::all();
 
-        return 
+        //  Do nothing and send back the results
+        
+        return view('admin-blog::index', [
+            'posts' => Blog::all()
+        ]);
         
     }
 
@@ -29,7 +32,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+
+
+        
     }
 
     /**
