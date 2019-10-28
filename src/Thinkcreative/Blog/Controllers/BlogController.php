@@ -33,9 +33,10 @@ class BlogController extends Controller {
      * Show the individual blog post
      * @return [Array] [A single collection of the requested blog post]
      */
-    public function show(Blog $post)
+    public function show(Blog $blog)
     {
 
+        dd($blog);
     }
 
 }

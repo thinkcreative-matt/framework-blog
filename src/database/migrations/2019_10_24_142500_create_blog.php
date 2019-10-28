@@ -17,7 +17,7 @@ class CreateBlog extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
             $table->string('title', 100);
-            $table->string('slug', 100);
+            $table->string('slug', 100)->unique();
             $table->text('intro')->nullable();
             $table->longText('body');
             $table->enum('status', ['published', 'unpublished', 'draft']);
