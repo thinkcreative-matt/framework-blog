@@ -18,15 +18,15 @@ class Blog extends Model
      *
      * @return void
      */
-    protected static function boot()
-    {
-        parent::boot();
+    // protected static function boot()
+    // {
+    //     parent::boot();
 
-        // We only ever want the first result!
-        static::addGlobalScope('id', function (Builder $builder) {
-            $builder->where('id', '=', 1);
-        });
-    }
+    //     // We only ever want the first result!
+    //     static::addGlobalScope('id', function (Builder $builder) {
+    //         $builder->where('id', '=', 1);
+    //     });
+    // }
 
 	/**
 	 * Get the route key for the model.
