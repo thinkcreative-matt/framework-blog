@@ -38,7 +38,7 @@ class BlogServiceProvider extends ServiceProvider
 
 		$this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
-		$this->loadViewsFrom(__DIR__.'../../resources/views', 'blog');
+		$this->loadViewsFrom(__DIR__.'/../../resources/views', 'blog');
 
 		$this->publishes([
             __DIR__ . '/../../resources/views' => base_path('resources/views/vendor/blog')
