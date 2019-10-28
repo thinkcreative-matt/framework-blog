@@ -40,6 +40,10 @@ class BlogServiceProvider extends ServiceProvider
 
 		$this->loadViewsFrom(__DIR__.'../../resources/views', 'blog');
 
+		$this->publishes([
+            __DIR__ . '/../../resources/views' => base_path('resources/views/vendor/blog')
+        ]);
+
 		// Register any commands for use in the CLI
 		// Uncomment for use.
 		
