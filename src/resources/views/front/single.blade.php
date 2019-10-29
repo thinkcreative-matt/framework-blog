@@ -8,9 +8,10 @@
 
 			@if($post->intro)
 				<p class="post-body-intro">{{$post->intro}}</p>
-			@else
-				<p class="post-body full">{{$post->limited_body}}</p>
 			@endif
+
+			<p class="post-body full">{{$post->limited_body}}</p>
+			
 					
 		</div>
 		
