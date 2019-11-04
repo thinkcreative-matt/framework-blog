@@ -5,6 +5,8 @@ namespace Thinkcreative\Blog\Admin\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+
+use Thinkcreative\Blog\Http\Requests\StoreBlogPost;
 use Thinkcreative\Blog\Blog;
 
 class BlogController extends Controller
@@ -41,7 +43,7 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBlogPost $request)
     {
         //
     }

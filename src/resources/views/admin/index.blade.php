@@ -1,4 +1,4 @@
-@include('admin-blog.components.subnav')
+@include('admin-blog::components.subnav')
 
 <div class="admin-container container blog">
 	<table class="table table-sm">
