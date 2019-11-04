@@ -1,7 +1,9 @@
-<div class="admin-container container">
-	
+@include('admin-blog.components.subnav')
+
+<div class="admin-container container blog">
 	<table class="table table-sm">
         <thead>
+        	<th></th>
             <th>Title</th>
             <th>Status</th>
             <th>Published At</th>
@@ -12,13 +14,32 @@
         <tbody>
         @forelse($posts as $post)
             <tr>
+            	<td>
+					<form action="{{ route('admin.blog.destroy', $post->slug) }}" method="POST">
+						@csrf
+						@method('DELETE')
+						<button type="submit" class="btn btn-danger btn-sm">
+							<i class="text-white fa-trash"></i>
+							delete
+						</button>   
+					</form>
+            	</td>
                 <td>{{$post->title}}</td>
-                <td>{{$post->status_icon}}</td>
-                <td>{{$post->published_at_short_date}}</td>
+                <td><span class="badge badge-{{$post->status_color}}">{{$post->status}}</span></td>
+                <td>{{$post->published_at->toFormattedDateString()}}  <small class="text-muted">{{$post->published_at->diffForHumans()}}</small></td>
                 <td>{{$post->user->full_name ?? 'User Unknown' }}</td>
-                <td>{{$post->created_at->toFormattedString('d-m-Y')}}</td>
+                <td>{{$post->created_at->toFormattedDateString()}} <small class="text-muted">{{$post->created_at->diffForHumans()}}</small></td>
                 <td>
-                	
+                	<div class="btn-group btn-group-sm" role="group" aria-label="Password Actions">
+						<a class="btn btn-light btn-sm" href="{{ route('admin.blog.edit', $post->slug) }}">
+							<i class="text-dark fa-pencil"></i>
+							edit
+						</a>
+						<a class="btn btn-light btn-sm" href="{{ route('admin.blog.show', $post->slug ) }}">
+							<i class="text-dark fa-eye"></i>
+							view	
+						</a>
+					</div>
                 </td>
             </tr>
         @empty
@@ -26,18 +47,6 @@
                 <td colspan="4">No blog posts available to show</td>
             </tr>
         @endif
-
         </tbody>
     </table>
-
-</div>
-
-
-<div class="btn-group btn-group-sm" role="group" aria-label="Password Actions">
-    <a class="btn btn-light btn-sm" href="{{ url('tc_password/' . $password->id . '/edit') }}"><i class="text-dark fa-pencil"></i></a>
-    <form action="{{ url('tc_password/' . $password->id) }}" method="POST">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger btn-sm"><i class="text-white fa-trash"></i></button>   
-    </form>
 </div>

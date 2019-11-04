@@ -15,6 +15,8 @@ class Blog extends Model
 	 */
 	protected $table = 'blog';
 
+	protected $dates = ['published_at'];
+
 	/**
 	 * Get the route key for the model.
 	 *
@@ -53,5 +55,27 @@ class Blog extends Model
 
 	}
 
+	public function getStatusColorAttribute() {
+
+
+
+		switch ($this->status) {
+			case 'published':
+				$color = 'success';
+				break;
+			case 'unpublished':
+				$color = 'warning';
+				break;
+			case 'draft':
+				$color = 'info';
+				break;
+			default:
+				$color = 'danger';
+				break;
+		}
+
+		return $color;
+
+	}
 
 }

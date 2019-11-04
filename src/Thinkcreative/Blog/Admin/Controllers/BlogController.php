@@ -32,8 +32,6 @@ class BlogController extends Controller
      */
     public function create()
     {
-
-
         
     }
 
@@ -54,8 +52,11 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
+
+        dd($post);
+
         abort(404, 'No need to show. Try something different.');
     }
 
@@ -65,9 +66,19 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $post = Blog::where('slug', $slug)->first();
+
+        if(is_null($post)) 
+        {
+            // we dont have that blog post available to edit. 
+            abort(404, 'weird... This blog post isn\'t available.');
+        }
+        
+        return view('admin-blog::edit', [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -91,5 +102,6 @@ class BlogController extends Controller
     public function destroy($id)
     {
         //
+        dd('delete');
     }
 }

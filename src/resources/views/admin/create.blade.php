@@ -1,20 +1,38 @@
 <div class="blog-container container">
 	
-	<div class="post card">
+	<h1>Create new blog post</h1>
 
-		<h2 class="post-title card-title">{{$post->title}}</h2>
-		<h4><small>{{$post->published_at_date}}</small></h4>
+	{{ Form::model($post, ['route' => [ 'admin.blog.store', $post->slug ], 'method' => 'POST' ]) }}
+				
+		<div class="form-group">
+			{{ Form::label('title', 'Title') }}
+			{{ Form::text('title', $post->title, ['class' => 'form-control']) }}
+		</div>
 
-		<div class="post-body card-body">
+		<div class="form-group">
+			{{ Form::label('slug', 'Slug') }}
+			{{ Form::text('slug', $post->slug, ['class' => 'form-control']) }}
+		</div>
 
-			@if($post->intro)
-				<p>{{$post->intro}}</p>
-			@endif
+		<div class="form-group">
+			{{ Form::label('intro', 'Intro') }}
+			{{ Form::textarea('intro', $post->intro, ['class' => 'form-control']) }}
+		</div>
 
-			<p>{{$post->body}}</p>
-					
+		<div class="form-group">
+			{{ Form::label('body', 'Body') }}
+			{{ Form::textarea('body', $post->body, ['class' => 'form-control']) }}
 		</div>
 		
-	</div>
+		<div class="form-group">
+			{{ Form::label('status', 'Status') }}
+			{{ Form::select('stats', [ 'draft' => 'Draft', 'published' => 'Published', 'unpublished' => 'Unpublished' ]) }}
+		</div>
+
+		<div class="form-group">
+			{{ Form::submit('Create Post') }}
+		</div>
+
+	{{ Form::close() }}
 
 </div>

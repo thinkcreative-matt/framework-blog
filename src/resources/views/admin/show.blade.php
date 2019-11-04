@@ -1,4 +1,4 @@
-<div class="blog-container container">
+ <div class="blog-container container">
 	
 	@foreach($posts as $post)
 		<div class="post card">
