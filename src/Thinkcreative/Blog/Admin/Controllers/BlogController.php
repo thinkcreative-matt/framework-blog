@@ -34,7 +34,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        
+        $post = new Blog();
+        return view('admin-blog::create', compact('post'));
     }
 
     /**

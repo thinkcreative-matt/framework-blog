@@ -4,6 +4,8 @@ namespace Thinkcreative\Blog;
 
 use Illuminate\Support\ServiceProvider;
 
+use Thinkcreative\Blog\Http\Requests\StoreBlogPost;
+
 class BlogServiceProvider extends ServiceProvider
 {
 	/**
@@ -72,6 +74,10 @@ class BlogServiceProvider extends ServiceProvider
 	{
 		$this->app->singleton(Blog::class, function() {
 			return new Blog();
+		});
+
+		$this->app->singleton(StoreBlogPost::class, function() {
+			return new StoreBlogPost();
 		});
 
 		$this->app->alias(Blog::class, 'blog');
