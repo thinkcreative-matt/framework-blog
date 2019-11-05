@@ -8,7 +8,7 @@ if(! function_exists('blog')) {
 		// whatever your alias is. 
 		$blog = app('blog');
 
-		$blog->all()->dd();
+		$blog->all();
 
 	}
 }
