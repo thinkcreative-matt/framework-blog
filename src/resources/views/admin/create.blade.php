@@ -40,6 +40,7 @@
 			</div>
 			<div class="form-group">
 				{{ Form::submit('Create Post', ['class' => 'btn btn-success']) }}
+				<a href="{{route('admin.blog.index')}}" class="btn btn-secondary">Back</a>
 			</div>
 		{{ Form::close() }}
 

@@ -23,10 +23,11 @@
 			</div>
 			<div class="form-group">
 				{{ Form::label('status', 'Status') }}
-				{{ Form::select('stats', [ 'draft' => 'Draft', 'published' => 'Published', 'unpublished' => 'Unpublished' ], null, ['class' => 'form-control' , 'placeholder' => 'Pick a Status...']) }}
+				{{ Form::select('status', [ 'draft' => 'Draft', 'published' => 'Published', 'unpublished' => 'Unpublished' ], null, ['class' => 'form-control' , 'placeholder' => 'Pick a Status...']) }}
 			</div>
 			<div class="form-group">
 				{{ Form::submit('Update Post', ['class' => 'btn btn-warning']) }}
+				<a href="{{route('admin.blog.index')}}" class="btn btn-secondary">Back</a>
 			</div>
 		{{ Form::close() }}
 	</div>

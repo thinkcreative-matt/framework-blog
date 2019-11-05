@@ -1,26 +1,34 @@
- <div class="blog-container container">
+{{-- @extends('tcadmin::layout') --}}
+@extends('admin.layout')
+
+@section('content')
+<div class="blog-container container">
 	
-	@foreach($posts as $post)
-		<div class="post card">
+	
+	<div class="post card">
+		<div class="post-body card-body">
 
 			<h2 class="post-title card-title">{{$post->title}}</h2>
 			<h4><small>{{$post->published_at_date}}</small></h4>
 
-			<div class="post-body card-body">
+			<hr>
 
-				@if($post->intro)
-					<p>{{$post->intro}}</p>
-				@else
-					<p>{{$post->limited_body}}</p>
-				@endif
-				
-			</div>
+			<p><strong>Intro</strong></p>
+			<p>{{$post->intro}}</p>
 
-			<div class="post-footer card-footer">
-				<a href="{{route('blog.show', $post->slug)}}" class="btn btn-secondary">Read More</a>
-			</div>
+			<p><strong>Limited Body</strong></p>
+			<p>{{$post->limited_body}}</p>
+
+			<p><strong>Body</strong></p>
+			<p>{{$post->body}}</p>
 			
 		</div>
-	@endforeach
+
+		<div class="post-footer card-footer">
+			<a href="{{route('admin.blog.index')}}" class="btn btn-secondary">Back</a>
+		</div>	
+	</div>
+	
 
 </div>
+@endsection

@@ -52,6 +52,7 @@ class BlogController extends Controller
         $post = new Blog;
 
         // Testing
+        // @todo: change to the authenticated user
         $post->user_id = 1;
         // $post->user_id = Auth::id();
         $post->title = $request->title;
@@ -63,13 +64,14 @@ class BlogController extends Controller
         $post->published_at = $request->published_at;
 
         try {
+
             $post->save();
-            Log::debug('New post, {$request->title}, created');
-            flash('success', 'New post, {$request->title}, created'); 
+            Log::debug("New post, {$request->title}, created");
+            flash("New post, {$request->title}, created")->success(); 
 
         } catch(QueryException $e) {
             Log::error('Create Blog -- ' . $e);
-            flash('danger','Something went wrong. Please try again');
+            flash('Something went wrong. Please try again')->danger();
         }
 
         return redirect()->route('admin.blog.index');
@@ -84,9 +86,8 @@ class BlogController extends Controller
     public function show($slug)
     {
 
-        dd($post);
-
-        abort(404, 'No need to show. Try something different.');
+        $post = Blog::where('slug', $slug)->first();
+        return view('admin-blog::show', compact('post'));
     }
 
     /**
@@ -117,9 +118,35 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $post = Blog::where('slug', $slug)->first();
+
+        // Testing
+        // @todo: change to the authenticated user
+        $post->user_id = 1;
+        // $post->user_id = Auth::id();
+        $post->title = $request->title;
+        $post->slug = $request->slug;
+        $post->intro = $request->intro;
+        $post->body  = $request->body;
+        $post->status = $request->status;
+
+        $post->published_at = $request->published_at;
+
+        try {
+
+            $post->save();
+            Log::debug("{$request->title} updated");
+            flash("Post, {$request->title}, updated")->success(); 
+
+        } catch(QueryException $e) {
+            Log::error('Update Blog -- ' . $e);
+            flash("Something went wrong. Please try again")->danger();
+        }
+
+        return redirect()->route('admin.blog.index');
+        
     }
 
     /**
@@ -128,9 +155,22 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
-        dd('delete');
+        $post = Blog::where('slug', $slug)->firstOrFail();
+
+        try {
+
+            $post->delete();
+            Log::debug("{$post->title} deleted");
+            flash("Post, {$post->title}, deleted")->error(); 
+
+        } catch(QueryException $e) {
+            Log::error('Update Blog -- ' . $e);
+            flash("Something went wrong. Please try again")->warning();
+        }
+
+        return redirect()->route('admin.blog.index');
+        
     }
 }
