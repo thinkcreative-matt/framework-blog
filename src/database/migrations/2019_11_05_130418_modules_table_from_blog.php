@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 use Thinkcreative\Blog\TCModule;
 
-class ModuleAddBlog extends Migration
+class ModulesTableFromBlog extends Migration
 {
     /**
      * Run the migrations.

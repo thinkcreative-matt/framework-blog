@@ -63,9 +63,8 @@ class BlogController extends Controller
         $post->published_at = $request->published_at;
 
         try {
-
             $post->save();
-            Log::success('New post, {$request->title}, created');
+            Log::debug('New post, {$request->title}, created');
             flash('success', 'New post, {$request->title}, created'); 
 
         } catch(QueryException $e) {
