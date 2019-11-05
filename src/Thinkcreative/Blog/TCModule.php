@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * THIS FILE ALWAYS NEEDS ADDING AND THEN
+ * CALLING WHEN USING THE FRAMEWORK.
+ * 
+ */
 namespace Thinkcreative\Blog;
 
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +15,7 @@ class TCModule extends Model
     protected $table = 'modules';
 
 
-    public static function AddModule($name, $showinmenu = false) {
+    public static function AddModule($name, $showinmenu = true) {
         $module = new Self;
         $module->name = $name;
         $module->show_in_menu = $showinmenu;
