@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 
 use Thinkcreative\Blog\Http\Requests\StoreBlogPost;
 use Thinkcreative\Blog\Blog;
-
 use Illuminate\Support\Facades\Validator;
+
+use Illuminate\Support\Facades\Log;
+use Illuminate\Database\QueryException;
 
 class BlogController extends Controller
 {
@@ -22,7 +24,6 @@ class BlogController extends Controller
     {
 
         //  Do nothing and send back the results
-        
         return view('admin-blog::index', [
             'posts' => Blog::all()
         ]);
@@ -36,7 +37,6 @@ class BlogController extends Controller
      */
     public function create()
     {
-        // dd(resource_path());
         $post = new Blog();
         return view('admin-blog::create', compact('post'));
     }
@@ -62,14 +62,18 @@ class BlogController extends Controller
 
         $post->published_at = $request->published_at;
 
-        if ($post->save() )
-        {
-            flash('success', 'New post, {$request->title}, created');    
-        } else {
+        try {
+
+            $post->save();
+            Log::success('New post, {$request->title}, created');
+            flash('success', 'New post, {$request->title}, created'); 
+
+        } catch(QueryException $e) {
+            Log::error('Create Blog -- ' . $e);
             flash('danger','Something went wrong. Please try again');
         }
 
-        return route('admin.blog');
+        return redirect()->route('admin.blog.index');
     }
 
     /**
