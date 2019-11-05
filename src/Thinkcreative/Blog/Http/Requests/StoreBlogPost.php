@@ -25,7 +25,7 @@ class StoreBlogPost extends FormRequest
     {
         return [
             'title' => 'required|max:100|',
-            'slug' => 'unique:blog'
+            'slug' => 'unique:blog',
             'intro' => 'required|max:255',
             'body' => 'required|min:50',
             'status' => 'required|in:draft,published,unpublished'

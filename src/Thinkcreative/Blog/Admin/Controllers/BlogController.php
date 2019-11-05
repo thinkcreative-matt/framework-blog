@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Thinkcreative\Blog\Http\Requests\StoreBlogPost;
 use Thinkcreative\Blog\Blog;
 
+use Illuminate\Support\Facades\Validator;
+
 class BlogController extends Controller
 {
     /**
@@ -34,6 +36,7 @@ class BlogController extends Controller
      */
     public function create()
     {
+        // dd(resource_path());
         $post = new Blog();
         return view('admin-blog::create', compact('post'));
     }
@@ -45,7 +48,21 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreBlogPost $request)
-    {
+    {   
+        // dump($request);
+
+        // $request->validate([
+        //     'title' => 'required|max:100|',
+        //     'slug' => 'unique:blog',
+        //     'intro' => 'required|max:255',
+        //     'body' => 'required|min:50',
+        //     'status' => 'required|in:draft,published,unpublished'
+        // ]);
+
+        // dd($request->validated);
+        // $validated = $request->validated();
+        // dd($validated);
+        // dd( new StoreBlogPost() );
         //
     }
 

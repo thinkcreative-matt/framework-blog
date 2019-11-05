@@ -25,10 +25,10 @@ class BlogServiceProvider extends ServiceProvider
 		// 	__DIR__.'/../../resources/css' => public_path('vendor/packagename')
 		// ], 'public');
 
-		//  Register and JS. 
-		// $this->publishes([
-		// 	__DIR__.'/resources/js' => public_path('vendor/packagename')
-		// ], 'public');
+		// Register and JS. 
+		$this->publishes([
+			__DIR__ . '/../../resources/js' => public_path('thinkcreative/blog')
+		], 'public');
 
 		//  Register any images
 		// $this->publishes([
