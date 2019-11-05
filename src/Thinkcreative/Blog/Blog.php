@@ -47,7 +47,7 @@ class Blog extends Model
 
 		if($this->status == 'published' && is_null($this->published_at) )
 		{
-			
+
 			return $this->attributes['published_at'] = Carbon::now();
 
 		} else if($this->status != 'published' && is_null($this->published_at)) {
@@ -65,8 +65,7 @@ class Blog extends Model
 
 	public function getPublishedAtDateAttribute() 
 	{
-		$date = Carbon::create($this->published_at);
-		return $date->format('l jS \\of F Y h:i:s A'); 
+		return $this->published_at->format('l jS \\of F Y h:i:s A'); 
 	}
 
 	public function getLimitedBodyAttribute() 

@@ -9,7 +9,7 @@
 		<div class="post-body card-body">
 
 			<h2 class="post-title card-title">{{$post->title}}</h2>
-			<h4><small>{{$post->published_at_date}}</small></h4>
+			<h4><small>{{ (!is_null($post->published_at) ? $post->published_at_date : '') }}</small></h4>
 
 			<hr>
 
