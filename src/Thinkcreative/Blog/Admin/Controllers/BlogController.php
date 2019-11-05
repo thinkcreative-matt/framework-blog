@@ -49,21 +49,27 @@ class BlogController extends Controller
      */
     public function store(StoreBlogPost $request)
     {   
-        // dump($request);
+        $post = new Blog;
 
-        // $request->validate([
-        //     'title' => 'required|max:100|',
-        //     'slug' => 'unique:blog',
-        //     'intro' => 'required|max:255',
-        //     'body' => 'required|min:50',
-        //     'status' => 'required|in:draft,published,unpublished'
-        // ]);
+        // Testing
+        $post->user_id = 1;
+        // $post->user_id = Auth::id();
+        $post->title = $request->title;
+        $post->slug = $request->slug;
+        $post->intro = $request->intro;
+        $post->body  = $request->body;
+        $post->status = $request->status;
 
-        // dd($request->validated);
-        // $validated = $request->validated();
-        // dd($validated);
-        // dd( new StoreBlogPost() );
-        //
+        $post->published_at = $request->published_at;
+
+        if ($post->save() )
+        {
+            flash('success', 'New post, {$request->title}, created');    
+        } else {
+            flash('danger','Something went wrong. Please try again');
+        }
+
+        return route('admin.blog');
     }
 
     /**

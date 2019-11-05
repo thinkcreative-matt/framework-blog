@@ -28,7 +28,7 @@ class BlogServiceProvider extends ServiceProvider
 		// Register and JS. 
 		$this->publishes([
 			__DIR__ . '/../../resources/js' => public_path('thinkcreative/blog')
-		], 'public');
+		], 'TCBlog');
 
 		//  Register any images
 		// $this->publishes([

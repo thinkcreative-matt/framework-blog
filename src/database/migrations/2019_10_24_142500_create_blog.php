@@ -21,7 +21,7 @@ class CreateBlog extends Migration
             $table->text('intro')->nullable();
             $table->longText('body');
             $table->enum('status', ['published', 'unpublished', 'draft']);
-            $table->timestamp('published_at');
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }
