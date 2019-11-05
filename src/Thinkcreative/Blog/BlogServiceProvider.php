@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 
 use Thinkcreative\Blog\Http\Requests\StoreBlogPost;
 
+use Thinkcreative\Blog\TCModule;
+
 class BlogServiceProvider extends ServiceProvider
 {
 	/**
@@ -72,6 +74,10 @@ class BlogServiceProvider extends ServiceProvider
      */
 	public function register()
 	{
+
+		TCModule::AddModule('blog');
+
+
 		$this->app->singleton(Blog::class, function() {
 			return new Blog();
 		});

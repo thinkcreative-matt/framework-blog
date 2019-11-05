@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBlogOptions extends Migration
+class ModuleAddBlog extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateBlogOptions extends Migration
      */
     public function up()
     {
-        Schema::create('blog_options', function (Blueprint $table) {
+        Schema::create('modules', function (Blueprint $table) {
+
             $table->bigIncrements('id');
-            $table->enum('order_dir', ['ASC', 'DESC', 'random']);
-            $table->enum('order_by', ['published_at', 'created_at', 'updated_at']);
-            $table->timestamps();
+            $table->string('name');
+            $table->boolean('show_in_menu');
+
         });
     }
 
@@ -28,6 +29,6 @@ class CreateBlogOptions extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_options');
+        //
     }
 }

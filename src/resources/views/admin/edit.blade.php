@@ -30,4 +30,4 @@
 			</div>
 		{{ Form::close() }}
 	</div>
-@section('content')
+@endsection
