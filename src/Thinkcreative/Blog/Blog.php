@@ -43,17 +43,24 @@ class Blog extends Model
 
 	public function setPublishedAtAttribute($value)
 	{
+
+
 		if($this->status == 'published' && is_null($this->published_at) )
 		{
-			return $value = Carbon::now();
+			
+			return $this->attributes['published_at'] = Carbon::now();
 
-		} else if($this->status != 'published' && is_null($this->published_at))
-		{
-			return null;
+		} else if($this->status != 'published' && is_null($this->published_at)) {
+			return $this->attributes['published_at'] = null;
 
+		} else if(!is_null($this->published_at) ) {
+			return $this->attributes['published_at'] = $this->published_at;
+
+		} else if(is_null($this->published_at)) {
+			return $this->attributes['published_at'] = null;
 		}
 
-		return $this->published_at;
+		return $this->attributes['published_at'] = $this->published_at;
 	}
 
 	public function getPublishedAtDateAttribute() 
