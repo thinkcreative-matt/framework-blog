@@ -75,9 +75,6 @@ class BlogServiceProvider extends ServiceProvider
 	public function register()
 	{
 
-		TCModule::AddModule('blog');
-
-
 		$this->app->singleton(Blog::class, function() {
 			return new Blog();
 		});

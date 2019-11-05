@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use Thinkcreative\Blog\TCModule;
+
 class ModuleAddBlog extends Migration
 {
     /**
@@ -13,13 +15,20 @@ class ModuleAddBlog extends Migration
      */
     public function up()
     {
-        Schema::create('modules', function (Blueprint $table) {
+        if (!Schema::hasTable('modules')) {
 
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->boolean('show_in_menu');
+            Schema::create('modules', function (Blueprint $table) {
 
-        });
+                $table->bigIncrements('id');
+                $table->string('name')->unique();
+                $table->boolean('show_in_menu');
+                $table->timestamps();
+
+            });
+        }
+        
+        TCModule::AddModule('blog');
+
     }
 
     /**
@@ -29,6 +38,6 @@ class ModuleAddBlog extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('modules');
     }
 }
