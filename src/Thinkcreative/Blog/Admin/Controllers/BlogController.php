@@ -118,7 +118,7 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug)
+    public function update(StoreBlogPost $request, $slug)
     {
         $post = Blog::where('slug', $slug)->first();
 
