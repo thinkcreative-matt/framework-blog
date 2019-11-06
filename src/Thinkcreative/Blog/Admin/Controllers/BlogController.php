@@ -166,7 +166,7 @@ class BlogController extends Controller
             flash("Post, {$post->title}, deleted")->error(); 
 
         } catch(QueryException $e) {
-            Log::error('Update Blog -- ' . $e);
+            Log::error('Deleted Blog -- ' . $e);
             flash("Something went wrong. Please try again")->warning();
         }
 
