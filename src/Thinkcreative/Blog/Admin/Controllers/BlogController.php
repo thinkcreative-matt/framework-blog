@@ -71,7 +71,7 @@ class BlogController extends Controller
 
         } catch(QueryException $e) {
             Log::error('Create Blog -- ' . $e);
-            flash('Something went wrong. Please try again')->danger();
+            flash('Something went wrong. Please try again')->error();
         }
 
         return redirect()->route('admin.blog.index');
@@ -142,7 +142,7 @@ class BlogController extends Controller
 
         } catch(QueryException $e) {
             Log::error('Update Blog -- ' . $e);
-            flash("Something went wrong. Please try again")->danger();
+            flash("Something went wrong. Please try again")->error();
         }
 
         return redirect()->route('admin.blog.index');
