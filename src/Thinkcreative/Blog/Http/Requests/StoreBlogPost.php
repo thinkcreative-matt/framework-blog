@@ -3,6 +3,7 @@
 namespace Thinkcreative\Blog\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreBlogPost extends FormRequest
 {
@@ -23,9 +24,13 @@ class StoreBlogPost extends FormRequest
      */
     public function rules()
     {
+
+        
         return [
             'title' => 'required|max:100|',
-            'slug' => 'unique:blog',
+            'slug' => [
+                Rule::unique('blog', 'slug')->ignore(request()->slug, 'slug')
+            ],
             'intro' => 'required|max:255',
             'body' => 'required|min:50',
             'status' => 'required|in:draft,published,unpublished'
