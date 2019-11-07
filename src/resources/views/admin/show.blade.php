@@ -1,6 +1,10 @@
 {{-- @extends('tcadmin::layout') --}}
 @extends('admin.layout')
 
+@section('subnav')
+    @include('admin-blog::components.subnav')
+@endsection
+
 @section('content')
 <div class="blog-container container">
 	

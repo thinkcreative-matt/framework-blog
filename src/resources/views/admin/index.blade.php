@@ -1,9 +1,12 @@
 {{-- @extends('tcadmin::layout') --}}
 @extends('admin.layout')
 
-@section('content')
+@section('subnav')
+    <a class="btn btn-light" href="{{route('admin')}}" role="button">Back To Dashboard</a>
+    <a class="btn btn-success" href="{{route('admin.blog.create')}}" role="button">Create New Post</a>
+@endsection
 
-    @include('admin-blog::components.subnav')
+@section('content')
 
     <div class="admin-container container blog">
         <table class="table table-sm">
