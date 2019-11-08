@@ -65,7 +65,7 @@ class Blog extends Model
 
 	public function getPublishedAtDateAttribute() 
 	{
-		return $this->published_at->format('l jS \\of F Y h:i:s A'); 
+		return (!is_null($this->published_at) ? $this->published_at->format('l jS \\of F Y h:i:s A') : '');
 	}
 
 	public function getLimitedBodyAttribute() 
